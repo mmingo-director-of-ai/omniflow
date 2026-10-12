@@ -8,7 +8,7 @@ Credit **Mëngøh Labs**. Suggested wording:
 
 > Artwork by Mëngøh Labs, from [omniflow](https://github.com/mmingo-director-of-ai/omniflow), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [Describe any modifications.]
 
-For WarpWeb this includes the bundled Kairo image. For OmniFlow it includes the original red-panda icons, watercolor illustrations, Nova reference and derived scene artwork in the asset catalogs. Source code, including drawing and sound-generation implementations, remains under [MIT](LICENSE).
+This covers the original red-panda icons, watercolor illustrations, Nova reference and derived scene artwork in the OmniFlow asset catalogs. Source code, including drawing and sound-generation implementations, remains under [MIT](LICENSE).
 
 ## Third-party material and names
 

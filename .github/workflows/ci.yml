@@ -45,6 +45,8 @@ jobs:
         run: python3 scripts/build-atlas-helper.py --test --output .build/NotchLeeAtlas
       - name: Generate project
         run: xcodegen generate --spec OmniFlow/project.yml
+      - name: Install Apple Metal toolchain
+        run: xcodebuild -downloadComponent MetalToolchain
       - name: Build macOS (unsigned)
         run: >-
           xcodebuild -project OmniFlow/OmniFlow.xcodeproj -scheme OmniFlow
