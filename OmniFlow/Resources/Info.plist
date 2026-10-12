@@ -111,5 +111,7 @@
 	<true/>
 	<key>OmniFlowGitSHA</key>
 	<string>dev</string>
+	<key>OmniFlowWidgetAppGroup</key>
+	<string>$(TeamIdentifierPrefix)com.mengohlabs.omniflow</string>
 </dict>
 </plist>

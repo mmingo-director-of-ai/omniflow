@@ -120,3 +120,11 @@ The direct Mac build includes behavior that is unavailable or restricted in sand
 CloudKit sync is opt-in and needs matching app IDs, a provisioned private container and a deployed schema. Its implemented scope includes completed transcript text, Reader positions and selected preferences; it does not provide a complete app backup. Validate account changes, offline recovery, conflict/deletion behavior and actual cross-device operation before advertising it as working in a distributed build. The current implementation reports oversize records instead of chunking them.
 
 Signing, notarization, entitlements and App Store review are separate release steps. Never claim a signed or reviewed release based on a local compilation check.
+
+Mac desktop widgets require the app and extension to use the same signing team.
+Their App Group entitlement and `OmniFlowWidgetAppGroup` Info.plist value both
+resolve `$(TeamIdentifierPrefix)com.mengohlabs.omniflow` at build time. Unsigned
+or unresolved configurations do not open a shared widget container.
+
+For a connected iPhone/iPad, `bash scripts/install-ios-device.sh <device-udid> <team-id>` requires your explicit development team; its build output stays in
+`.build/ios-device`.

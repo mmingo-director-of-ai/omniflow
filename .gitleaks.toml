@@ -1,16 +1,12 @@
 [extend]
 useDefault = true
 
-# Exact public model checksums, not credentials. Do not allowlist whole source files.
+# Exact public model/source checksums, not credentials. Do not allowlist whole source files.
 [[allowlists]]
-description = "Pinned tokenizer SHA-256 digests"
+description = "Pinned tokenizer and vendored source SHA-256 digests"
 regexTarget = "secret"
 regexes = [
   '^ad47af68eb0dfcc868258957578831a793a15858b88e2f8325d644fc77f4fb1c$',
   '^c8ee8927ebec39b93edf7333e7ded950299c643a569a601bb7bac9dc94d1f648$',
+  '^c93f6858520b6e7e1de43a9c0da9a9632d76d1e4ef48862dfb1f0cec6c01a39a$',
 ]
-
-# Machine-generated SHA-256-only vendor manifest, verified by the build helper.
-[[allowlists]]
-description = "Vendored source integrity manifest"
-paths = ['(^|/)Vendor/atlas-sdk-manifest\.json$']

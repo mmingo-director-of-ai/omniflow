@@ -30,6 +30,7 @@
 		05A15E00A64A082D1AEF9742 /* NotchLeeMediaPanels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EE947179CD6AA54752239 /* NotchLeeMediaPanels.swift */; };
 		05D09790DE52A026344FA8B9 /* PersonaSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1367DC2198BCCA1CF901D866 /* PersonaSettingsView.swift */; };
 		0604EF39A94EEFE020AD0DD2 /* AtlasContextWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C7853DC30484D377A465F /* AtlasContextWindow.swift */; };
+		061086BD7DC06266A244F22B /* LICENSE-ARTWORK in Resources */ = {isa = PBXBuildFile; fileRef = C8BC240F81EEFAA28C2564AB /* LICENSE-ARTWORK */; };
 		08398C4C2D6529FAE2E8D8AE /* AtlasRuntime-LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3B0EB9D237CAA8BE310C4420 /* AtlasRuntime-LICENSE.txt */; };
 		094E7EDAD2767C52E46AF862 /* RewriteValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D89BB9CDF1CF7664E60FC0 /* RewriteValidation.swift */; };
 		0984F8742667143EBF771CFA /* VoiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366020D0D21603969F41DF5 /* VoiceInput.swift */; };
@@ -102,6 +103,7 @@
 		26076AC243F8E6E74324444C /* RedPanda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8D75CC1290D6A3B41F71 /* RedPanda.swift */; };
 		2619D5203895AAE0CD219196 /* DictationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DD8DB20BADE8C8A1F59452 /* DictationPreferences.swift */; };
 		278D7AAF80EB34A0E3F2749F /* IslandStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F89AE1F40315E4D5F1ACE86 /* IslandStateMachine.swift */; };
+		27AE30F5C3E946C1296CCB6F /* LICENSE-ASSETS.md in Resources */ = {isa = PBXBuildFile; fileRef = 11789421CADD334D97E84109 /* LICENSE-ASSETS.md */; };
 		27FDB069D1AC78EFFE7C9020 /* PhrasingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CC3CA8BBEFD1300408DDA6 /* PhrasingEngine.swift */; };
 		287D8DCC11B24F5DAFD713BE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D005EF910220ECA93F1E22 /* SettingsView.swift */; };
 		28D64F75A1668D569CEB9660 /* AtlasFrameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E335FBEB315078B33642E53 /* AtlasFrameServer.swift */; };
@@ -208,6 +210,7 @@
 		5913F4BEF8C6CF6E61036FB8 /* MCPSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC980A9BE31674E1C2DC91C /* MCPSettingsView.swift */; };
 		59E0C744C2B2C4B68274E9F3 /* AtlasMCPHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4047AFDE7495B4B7A42AC5 /* AtlasMCPHost.swift */; };
 		59F6948D5CF667960B740841 /* RewriteValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D89BB9CDF1CF7664E60FC0 /* RewriteValidation.swift */; };
+		5A2A827B5410324373253558 /* LICENSE-ASSETS.md in Resources */ = {isa = PBXBuildFile; fileRef = 11789421CADD334D97E84109 /* LICENSE-ASSETS.md */; };
 		5A520FF2D34E7DCFFE3E7826 /* OmniFlowMonitoringHardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC037F442451FBEF74EEC5 /* OmniFlowMonitoringHardware.swift */; };
 		5A9C4B5E92220822A533B4E5 /* AtlasPayloadStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A59342A7742E8905C0A111 /* AtlasPayloadStore.swift */; };
 		5B0846C8A963D03A9D1532F2 /* AtlasMCPGenerationSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84858AF72C9A5D37C09BA23A /* AtlasMCPGenerationSchema.swift */; };
@@ -304,6 +307,7 @@
 		8693C261BC9966104C54BDD9 /* OmniFlowRecordingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50627BD26AF48A8D2C31044 /* OmniFlowRecordingActivity.swift */; };
 		871FF619729EF47FE262431F /* MCPConnectionPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9729449C3B2C43E45B208036 /* MCPConnectionPool.swift */; };
 		87379B3B533DC0B3300E6B7B /* SelectionActionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982AEC7DB8DD58512AEA2C9 /* SelectionActionService.swift */; };
+		878A8A3024B3A02ABDF96FC4 /* LICENSE-ARTWORK in Resources */ = {isa = PBXBuildFile; fileRef = C8BC240F81EEFAA28C2564AB /* LICENSE-ARTWORK */; };
 		87FCA42A8081A411B7D2B2CC /* THIRD-PARTY-NOTICES.md in Resources */ = {isa = PBXBuildFile; fileRef = 7D77C203F7E8E7B47097D909 /* THIRD-PARTY-NOTICES.md */; };
 		8852F845470F268690D96DAF /* NotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36062190FFBE510D430D228 /* NotesModel.swift */; };
 		894D55FEAF083D18CA6921D5 /* LocalImageDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172C5951C0D845C3C39FE41 /* LocalImageDescription.swift */; };
@@ -397,6 +401,7 @@
 		A9996FE6B210CBE0DA68584D /* AtlasJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190311E2615F1FB5BD1B429E /* AtlasJSON.swift */; };
 		AAC1508640E9930B53EDF20F /* ApprovalDecisionGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3C5EBD27D2BF9611915C46 /* ApprovalDecisionGate.swift */; };
 		AB1066EC86B29448327E7158 /* ReaderCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EB38932C6481D5708DFC0A /* ReaderCover.swift */; };
+		AB506B7D8D3731DE78209F43 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AC6737532B09D55CA4E44D76 /* LICENSE */; };
 		ABAB6D1403671816AE074ED8 /* AmbientCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E01788F13C8AF29D9CDE6F3 /* AmbientCapabilities.swift */; };
 		ACD96E01B509AAA7915CA881 /* AtlasPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969053FE3092D97079D2A9C9 /* AtlasPlanner.swift */; };
 		ACE423C6786454ABB50916A7 /* AtlasMetalAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4559D0CA8E868D958AD74FA5 /* AtlasMetalAgent.swift */; };
@@ -520,11 +525,14 @@
 		D5E7D584475B0A808B97F386 /* OmniFlowLaunchIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E7F8511C071E16F9C82D6 /* OmniFlowLaunchIntents.swift */; };
 		D60A7A5ABB9A12720D9D93D4 /* CleanupEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6842148C0F796B5C0849C3F /* CleanupEdit.swift */; };
 		D65E57E7198E50041BC59E27 /* AtlasMCPInitialRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7B4E9B15BF0EEAF4AF6D0E /* AtlasMCPInitialRouting.swift */; };
+		D65FC0F5DA2465E28E070E15 /* LICENSE-ASSETS.md in Resources */ = {isa = PBXBuildFile; fileRef = 11789421CADD334D97E84109 /* LICENSE-ASSETS.md */; };
 		D771FE2772735051CDDAFC3D /* PremiumSpeechVoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44028BB283255AAF3C1C730F /* PremiumSpeechVoices.swift */; };
 		D77B49697BBC63BAC5DFC0A8 /* SessionFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0DCD01A8BBC512BB2ECF65 /* SessionFailure.swift */; };
 		D78E8C368461A0B31E59D4BA /* ReaderFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C0A1ADE5FF97CA7F048B18 /* ReaderFavorites.swift */; };
 		D842C7C79184C8E36D205FE9 /* PointerDwell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E9E40100AD15D913697DEF /* PointerDwell.swift */; };
+		D8775F6C26678AC506790011 /* LICENSE-ARTWORK in Resources */ = {isa = PBXBuildFile; fileRef = C8BC240F81EEFAA28C2564AB /* LICENSE-ARTWORK */; };
 		D89995B6C8BB8EE2891D290E /* OmniFlowAppLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE4823B916FC2A46230997 /* OmniFlowAppLock.swift */; };
+		D972FFEDFFC4BDA5A2DFEDD7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AC6737532B09D55CA4E44D76 /* LICENSE */; };
 		D98BE5BA6DA1B7AF02AB7BD6 /* AtlasRetrieval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB0A2F98679F5E68AEA818B /* AtlasRetrieval.swift */; };
 		D991E1638C36BD1CEBD04B06 /* LocalImageDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172C5951C0D845C3C39FE41 /* LocalImageDescription.swift */; };
 		D9B24225467647F84CF21FB4 /* KokoroReplySpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552681326AA0672F30518564 /* KokoroReplySpeaker.swift */; };
@@ -633,6 +641,7 @@
 		FE14B104BD598C8D38F84564 /* LocalJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B712BDAC281A3395C1E657 /* LocalJournal.swift */; };
 		FE66B03F2657A16DA63AD235 /* OmniFlowShortcutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3128FE6E83229722ED1A412A /* OmniFlowShortcutGuide.swift */; };
 		FE9801320423FB0D7E5DB16F /* IOSBookPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8784EFD1D1299AC031145E4 /* IOSBookPagination.swift */; };
+		FED62109400F2837FB331C41 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AC6737532B09D55CA4E44D76 /* LICENSE */; };
 		FF1617BB6182702C4CB98247 /* AtlasPayloadStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A59342A7742E8905C0A111 /* AtlasPayloadStore.swift */; };
 		FF96A60BE2E8462672565046 /* NativeAtlasRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DC9FEB4DCFA740E9BBC997 /* NativeAtlasRunner.swift */; };
 		FFE491500EE27611017FBA69 /* ReaderPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6D93867DFA97A6E6F9248D /* ReaderPlayback.swift */; };
@@ -702,6 +711,7 @@
 		0A4047AFDE7495B4B7A42AC5 /* AtlasMCPHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasMCPHost.swift; sourceTree = "<group>"; };
 		0E028C09EEF184C640F01A9E /* OmniFlowFocusSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniFlowFocusSettings.swift; sourceTree = "<group>"; };
 		0E5C7853DC30484D377A465F /* AtlasContextWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasContextWindow.swift; sourceTree = "<group>"; };
+		11789421CADD334D97E84109 /* LICENSE-ASSETS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = "LICENSE-ASSETS.md"; path = "../LICENSE-ASSETS.md"; sourceTree = "<group>"; };
 		1319352D5DEAB6B7AF50E080 /* NotchLeeCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchLeeCarousel.swift; sourceTree = "<group>"; };
 		1367DC2198BCCA1CF901D866 /* PersonaSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaSettingsView.swift; sourceTree = "<group>"; };
 		142E8E28C7B236BB848B3771 /* HostAppReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppReturn.swift; sourceTree = "<group>"; };
@@ -889,6 +899,7 @@
 		A8784EFD1D1299AC031145E4 /* IOSBookPagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSBookPagination.swift; sourceTree = "<group>"; };
 		A982DD864D68DCB31651A457 /* Brand */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Brand; path = Resources/Brand; sourceTree = SOURCE_ROOT; };
 		AA2080B8AC623ED5426A4C65 /* MCPConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPConfiguration.swift; sourceTree = "<group>"; };
+		AC6737532B09D55CA4E44D76 /* LICENSE */ = {isa = PBXFileReference; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		AE1EE947179CD6AA54752239 /* NotchLeeMediaPanels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchLeeMediaPanels.swift; sourceTree = "<group>"; };
 		B055CA72BF2FAF79B500E092 /* AssistantConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantConversation.swift; sourceTree = "<group>"; };
 		B175D00DD59EAD30BB0A17D8 /* OmniFlowFocusSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniFlowFocusSettingsView.swift; sourceTree = "<group>"; };
@@ -915,6 +926,7 @@
 		C6842148C0F796B5C0849C3F /* CleanupEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupEdit.swift; sourceTree = "<group>"; };
 		C6E9E40100AD15D913697DEF /* PointerDwell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerDwell.swift; sourceTree = "<group>"; };
 		C7C2FDDCCD58359AF6B61EC0 /* AudioSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSessionController.swift; sourceTree = "<group>"; };
+		C8BC240F81EEFAA28C2564AB /* LICENSE-ARTWORK */ = {isa = PBXFileReference; name = "LICENSE-ARTWORK"; path = "../LICENSE-ARTWORK"; sourceTree = "<group>"; };
 		CEB27F57BD8F2A083D34D10E /* OmniFlowiOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = OmniFlowiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF844F8DCDD2B9C88E00E3CC /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
 		D06457678697AC9E52711CA0 /* ReaderPositionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderPositionStore.swift; sourceTree = "<group>"; };
@@ -1050,6 +1062,9 @@
 		1D2C8156D77F539805CBF4C0 /* Notices */ = {
 			isa = PBXGroup;
 			children = (
+				AC6737532B09D55CA4E44D76 /* LICENSE */,
+				C8BC240F81EEFAA28C2564AB /* LICENSE-ARTWORK */,
+				11789421CADD334D97E84109 /* LICENSE-ASSETS.md */,
 				7D77C203F7E8E7B47097D909 /* THIRD-PARTY-NOTICES.md */,
 			);
 			name = Notices;
@@ -1660,6 +1675,9 @@
 				5E38D3D7A91BB05B82B24618 /* AtlasRuntime-LICENSE.txt in Resources */,
 				3093CF1D56408305F52DC218 /* Brand in Resources */,
 				4DE03ACF1DE6E845088BB2D4 /* Kokoro-Licenses in Resources */,
+				D972FFEDFFC4BDA5A2DFEDD7 /* LICENSE in Resources */,
+				D8775F6C26678AC506790011 /* LICENSE-ARTWORK in Resources */,
+				D65FC0F5DA2465E28E070E15 /* LICENSE-ASSETS.md in Resources */,
 				15D622775B7EA662916788BB /* SharedArt.xcassets in Resources */,
 				AD2855A339A119409847520B /* Symbols.xcassets in Resources */,
 				95B8CC9E26BF024B14D144CD /* THIRD-PARTY-NOTICES.md in Resources */,
@@ -1676,6 +1694,9 @@
 				F550B729BFBE99FA2F4F42FF /* AtlasRuntime-LICENSE.txt in Resources */,
 				DC7EA1416AB6D0793AD3EB3C /* Brand in Resources */,
 				9271F8C2DE206B9F3916B008 /* Kokoro-Licenses in Resources */,
+				FED62109400F2837FB331C41 /* LICENSE in Resources */,
+				878A8A3024B3A02ABDF96FC4 /* LICENSE-ARTWORK in Resources */,
+				5A2A827B5410324373253558 /* LICENSE-ASSETS.md in Resources */,
 				F218B5E4AB65A5B4B33D90D4 /* MLX-third-party-notices.txt in Resources */,
 				DCAD8ADCB954B9E54FEB28B9 /* SharedArt.xcassets in Resources */,
 				693DE9A5CF7A0F843F0DDFD1 /* SiriTTSInterface-LICENSE.txt in Resources */,
@@ -1700,6 +1721,9 @@
 				08398C4C2D6529FAE2E8D8AE /* AtlasRuntime-LICENSE.txt in Resources */,
 				91D505F8366B1518C9E7080D /* Kokoro-Apache-2.0.txt in Resources */,
 				0384D1C3393FCAD0ED2B0B5E /* Kokoro-Licenses in Resources */,
+				AB506B7D8D3731DE78209F43 /* LICENSE in Resources */,
+				061086BD7DC06266A244F22B /* LICENSE-ARTWORK in Resources */,
+				27AE30F5C3E946C1296CCB6F /* LICENSE-ASSETS.md in Resources */,
 				E8BF1E20AC320B128E903A1A /* SharedArt.xcassets in Resources */,
 				4E24A2D7FC1CA21462CE84C2 /* Symbols.xcassets in Resources */,
 				9AA38E1EEFD741851C150471 /* THIRD-PARTY-NOTICES.md in Resources */,

@@ -6,7 +6,7 @@
     <true/>
     <key>com.apple.security.application-groups</key>
     <array>
-        <string>TK32DMT83D.com.mengohlabs.omniflow</string>
+        <string>$(TeamIdentifierPrefix)com.mengohlabs.omniflow</string>
     </array>
 </dict>
 </plist>

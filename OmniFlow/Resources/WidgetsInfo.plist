@@ -25,5 +25,7 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widgetkit-extension</string>
 	</dict>
+	<key>OmniFlowWidgetAppGroup</key>
+	<string>$(TeamIdentifierPrefix)com.mengohlabs.omniflow</string>
 </dict>
 </plist>

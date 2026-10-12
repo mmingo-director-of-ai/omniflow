@@ -39,6 +39,7 @@ jobs:
           bash scripts/check-reader-offmain.sh --self-test
           bash scripts/check-reader-offmain.sh
           bash scripts/test-approval-decisions.sh
+          bash scripts/test-widget-app-group.sh
           bash scripts/test-screen-geometry.sh
           bash scripts/test-safe-links.sh
       - name: Pinned Atlas helper

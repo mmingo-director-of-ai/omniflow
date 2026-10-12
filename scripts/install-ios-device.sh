@@ -2,14 +2,14 @@
 # Builds the current checkout for a connected iPhone or iPad, installs it and
 # relaunches it, stamping the build so installs can be told apart:
 # CFBundleVersion = commit count, OmniFlowGitSHA = short SHA (+ "-dirty").
-# Usage: scripts/install-ios-device.sh <device-udid> [team-id]
+# Usage: scripts/install-ios-device.sh <device-udid> <team-id>
 set -euo pipefail
 cd "$(dirname "$0")/.."
 DEVICE="${1:?device UDID (xcrun devicectl list devices)}"
-TEAM="${2:-TK32DMT83D}"
+TEAM="${2:?Apple development team ID is required}"
 BUILD="$(git rev-list --count HEAD)"
 SHA="$(git rev-parse --short HEAD)$(git diff --quiet HEAD -- OmniFlow || echo -dirty)"
-OUT="${TMPDIR:-/tmp}/omniflow-ios-device"
+OUT="$PWD/.build/ios-device"
 (cd OmniFlow && xcodegen generate -q)
 xcodebuild -project OmniFlow/OmniFlow.xcodeproj -scheme OmniFlowiOS -destination "id=$DEVICE" -derivedDataPath "$OUT" \
     -allowProvisioningUpdates CODE_SIGNING_ALLOWED=YES CODE_SIGNING_REQUIRED=YES DEVELOPMENT_TEAM="$TEAM" \

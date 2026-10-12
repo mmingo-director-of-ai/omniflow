@@ -52,12 +52,20 @@ struct OmniFlowWidgetSnapshot: Codable, Equatable, Sendable {
 }
 
 enum OmniFlowWidgetStore {
-    /// Team-prefixed so macOS grants the container without a provisioning profile.
-    static let appGroup = "TK32DMT83D.com.mengohlabs.omniflow"
+    /// The app and extension resolve the same build setting as their entitlements.
+    /// Unsigned builds have no shared container; never guess a publisher's team.
+    static let appGroup = configuredAppGroup(Bundle.main.object(forInfoDictionaryKey: "OmniFlowWidgetAppGroup"))
+
+    static func configuredAppGroup(_ value: Any?) -> String? {
+        guard let value = value as? String,
+              value.range(of: #"^[A-Z0-9]{10}\.com\.mengohlabs\.omniflow\z"#, options: .regularExpression) != nil else { return nil }
+        return value
+    }
     static let kinds = (system: "OmniFlowSystemWidget", agents: "OmniFlowAgentsWidget", actions: "OmniFlowActionsWidget")
 
     static var fileURL: URL? {
-        FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)?
+        guard let appGroup else { return nil }
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)?
             .appendingPathComponent("widget-snapshot.json")
     }
 

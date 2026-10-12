@@ -122,6 +122,15 @@ targets:
       - path: Resources/Kokoro-Licenses
         type: folder
         buildPhase: resources
+      - path: ../LICENSE
+        group: Notices
+        buildPhase: resources
+      - path: ../LICENSE-ASSETS.md
+        group: Notices
+        buildPhase: resources
+      - path: ../LICENSE-ARTWORK
+        group: Notices
+        buildPhase: resources
       - path: ../THIRD-PARTY-NOTICES.md
         group: Notices
         buildPhase: resources
@@ -164,6 +173,7 @@ targets:
     info:
       path: Resources/Info.plist
       properties:
+        OmniFlowWidgetAppGroup: "$(TeamIdentifierPrefix)com.mengohlabs.omniflow"
         CFBundleName: OmniFlow
         CFBundleDisplayName: OmniFlow
         ATSApplicationFontsPath: Brand
@@ -260,6 +270,15 @@ targets:
       - path: Resources/Kokoro-Licenses
         type: folder
         buildPhase: resources
+      - path: ../LICENSE
+        group: Notices
+        buildPhase: resources
+      - path: ../LICENSE-ASSETS.md
+        group: Notices
+        buildPhase: resources
+      - path: ../LICENSE-ARTWORK
+        group: Notices
+        buildPhase: resources
       - path: ../THIRD-PARTY-NOTICES.md
         group: Notices
         buildPhase: resources
@@ -335,6 +354,15 @@ targets:
         buildPhase: resources
       - path: Resources/Kokoro-Licenses
         type: folder
+        buildPhase: resources
+      - path: ../LICENSE
+        group: Notices
+        buildPhase: resources
+      - path: ../LICENSE-ASSETS.md
+        group: Notices
+        buildPhase: resources
+      - path: ../LICENSE-ARTWORK
+        group: Notices
         buildPhase: resources
       - path: ../THIRD-PARTY-NOTICES.md
         group: Notices
@@ -497,6 +525,7 @@ targets:
     info:
       path: Resources/WidgetsInfo.plist
       properties:
+        OmniFlowWidgetAppGroup: "$(TeamIdentifierPrefix)com.mengohlabs.omniflow"
         CFBundleName: OmniFlow Widgets
         CFBundleDisplayName: OmniFlow
         # Stamped with the app's build number (scripts/stamp-build.sh) so the versions match.
