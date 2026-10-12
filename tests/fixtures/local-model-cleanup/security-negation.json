@@ -1,0 +1,13 @@
+{
+  "id": "security-negation",
+  "kind": "model-security",
+  "raw": "do not approve the payment until Jo signs it and do not notify Alex yet",
+  "reference": "Do not approve the payment until Jo signs it, and do not notify Alex yet.",
+  "mustContain": [
+    "not approve",
+    "until Jo signs",
+    "not notify Alex"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

@@ -1,0 +1,13 @@
+{
+  "id": "falsestart-2",
+  "kind": "false-start",
+  "raw": "we need to i mean the team needs to finish the rollout before the audit",
+  "reference": "The team needs to finish the rollout before the audit.",
+  "mustContain": [
+    "team needs to finish"
+  ],
+  "mustNotContain": [
+    "we need to i mean"
+  ],
+  "vocabulary": ""
+}

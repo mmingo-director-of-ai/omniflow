@@ -1,0 +1,14 @@
+{
+  "id": "falsestart-1",
+  "kind": "false-start",
+  "raw": "can you can you send me the the link to the dashboard",
+  "reference": "Can you send me the link to the dashboard?",
+  "mustContain": [
+    "send me the link"
+  ],
+  "mustNotContain": [
+    "can you can you",
+    "the the"
+  ],
+  "vocabulary": ""
+}

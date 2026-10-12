@@ -1,0 +1,13 @@
+{
+  "id": "boundary-ahead",
+  "kind": "word-boundary",
+  "raw": "please send me the agenda a head of the meeting",
+  "reference": "Please send me the agenda ahead of the meeting.",
+  "mustContain": [
+    "ahead of"
+  ],
+  "mustNotContain": [
+    "a head of"
+  ],
+  "vocabulary": ""
+}

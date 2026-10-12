@@ -1,0 +1,13 @@
+{
+  "id": "selfcorrect-scratch",
+  "kind": "self-correction",
+  "raw": "send the invoice today scratch that send it on monday",
+  "reference": "Send it on Monday.",
+  "mustContain": [
+    "Monday"
+  ],
+  "mustNotContain": [
+    "today"
+  ],
+  "vocabulary": ""
+}

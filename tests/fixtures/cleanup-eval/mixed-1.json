@@ -1,0 +1,15 @@
+{
+  "id": "mixed-1",
+  "kind": "mixed",
+  "raw": "um so the api is returning a for oh four when the user is logged out which i think is wrong it should be a for oh one",
+  "reference": "The API is returning a 404 when the user is logged out, which I think is wrong. It should be a 401.",
+  "mustContain": [
+    "API",
+    "404",
+    "401"
+  ],
+  "mustNotContain": [
+    "um"
+  ],
+  "vocabulary": ""
+}

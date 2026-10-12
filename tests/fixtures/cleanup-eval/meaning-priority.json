@@ -1,0 +1,14 @@
+{
+  "id": "meaning-priority",
+  "kind": "meaning",
+  "raw": "The export feature is nice to have but fixing the crash is the priority. Do the crash fix first and the export later.",
+  "reference": "The export feature is nice to have, but fixing the crash is the priority. Do the crash fix first and the export later.",
+  "mustContain": [
+    "crash",
+    "priority",
+    "first",
+    "export later"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

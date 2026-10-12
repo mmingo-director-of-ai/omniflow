@@ -1,0 +1,17 @@
+{
+  "id": "meaning-topic-return",
+  "kind": "meaning",
+  "raw": "The budget is probably enough for the first release. The launch date is a separate question and we have not committed to Friday. Back to the budget we should keep a reserve for support.",
+  "reference": "The budget is probably enough for the first release.\n\nThe launch date is a separate question, and we have not committed to Friday.\n\nBack to the budget, we should keep a reserve for support.",
+  "mustContain": [
+    "probably",
+    "not committed",
+    "Friday",
+    "reserve",
+    "\n\n"
+  ],
+  "mustNotContain": [
+    "will launch"
+  ],
+  "vocabulary": ""
+}

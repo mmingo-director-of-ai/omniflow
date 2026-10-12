@@ -1,0 +1,15 @@
+{
+  "id": "grammar-auxiliary",
+  "kind": "grammar",
+  "raw": "The team have finish the review yesterday. They needs to send the report today.",
+  "reference": "The team finished the review yesterday. They need to send the report today.",
+  "mustContain": [
+    "finished",
+    "need to send"
+  ],
+  "mustNotContain": [
+    "have finish",
+    "needs to"
+  ],
+  "vocabulary": ""
+}

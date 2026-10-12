@@ -1,0 +1,23 @@
+name: Bug report
+description: Report a reproducible problem (not a private security disclosure).
+body:
+  - type: markdown
+    attributes:
+      value: "Remove tokens, private URLs, transcripts and personal files. Report vulnerabilities through the Security tab."
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, hardware, terminal (if relevant), commit and build method.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps, expected result and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized logs or screenshots

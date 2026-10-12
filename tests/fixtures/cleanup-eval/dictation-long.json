@@ -1,0 +1,18 @@
+{
+  "id": "dictation-long",
+  "kind": "real",
+  "raw": "OK now let's do this. Acme is released widgets like two days ago so let's start building widgets to replace the template system. We have and enhance it by changing the actual page layout for Acme to support those things especially our team. Our shared notes feature we should be able to wire that in significantly better. and then all of our planning tools our reporting tools. We can take all the lessons learned across you have the stuff we've been working on recently and revamp those tools but also wire them a whole lot better I want to introduce a like right panel as well that can show like extra information so that we're not always cluttering the main view with things like tool, updates and activity history and stuff like that and then we can also put things in there like summary tables from like you know we're doing reviews table facts will table ICs will tell all the kind of stuff, but we need to evaluate how we can use different visuals and different layouts via the widget system to maximize like clarity and speed within our within our set up, same thing for our status bar let's revamp that visually so one of the first things I wanna do is go to like a I don't know what we call it but some kind of a like line break meter bar to represent like how much percentage for the monthly plan we have and how much percentage for the day we have right so we name it daily and monthly just like we do right now to get her label system and we can even retain that label system, but I think maybe try and soften it like around the edges. See if we can actually make it look like you have labels now and Then do the same for the other others and see if we can get some better visual tweaks.",
+  "reference": "OK, now let's do this. Acme released widgets two days ago, so let's start building widgets to replace the template system we have and enhance it by changing the actual page layout for Acme to support those things, especially our team's shared notes feature. We should be able to wire that in significantly better, and then all of our planning tools and our reporting tools. We can take all the lessons learned across the stuff we've been working on recently and revamp those tools, but also wire them a whole lot better. I want to introduce a right panel as well that can show extra information, so that we're not always cluttering the main view with things like tool updates and activity history. Then we can also put things in there like summary tables from reviews: a facts table, an IOC table, all that kind of stuff. But we need to evaluate how we can use different visuals and different layouts via the widget system to maximize clarity and speed within our setup. Same thing for our status bar: let's revamp that visually. One of the first things I want to do is go to some kind of meter bar to represent how much percentage we have for the monthly plan and how much for the day. We name it daily and monthly, just like we do right now, together with the label system, and we can even retain that label system, but maybe try to soften it around the edges. See if we can actually make it look like labels, and then do the same for the others and see if we can get some better visual tweaks.",
+  "mustContain": [
+    "Acme released",
+    "widgets",
+    "IOC",
+    "together"
+  ],
+  "mustNotContain": [
+    "you know",
+    "I don't know what we call it",
+    "like a like"
+  ],
+  "vocabulary": "IOC\nAcme"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "meaning-person-reference",
+  "kind": "meaning",
+  "raw": "Priya needs a ride so we should go to get her before the meeting starts.",
+  "reference": "Priya needs a ride, so we should go to get her before the meeting starts.",
+  "mustContain": [
+    "to get her",
+    "before",
+    "Priya"
+  ],
+  "mustNotContain": [
+    "go together"
+  ],
+  "vocabulary": "Priya"
+}

@@ -1,0 +1,574 @@
+name: OmniFlow
+options:
+  bundleIdPrefix: com.mengohlabs
+  deploymentTarget:
+    macOS: "27.0"
+    iOS: "27.0"
+  xcodeVersion: "27.0"
+  createIntermediateGroups: true
+
+# AppStore is the review-bound iOS configuration: no private APIs (see
+# OMNIFLOW_IOS_PRIVATE_APIS below and scripts/check-ios-private-apis.sh).
+configs:
+  Debug: debug
+  Release: release
+  AppStore: release
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    # Branding is temporary; distribution must use the verified Mengoh Labs team.
+    OMNIFLOW_INTENDED_PUBLISHER: "Mengoh Labs"
+    ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    ENABLE_HARDENED_RUNTIME: YES
+    CODE_SIGN_STYLE: Manual
+    OTHER_SWIFT_FLAGS: "-strict-concurrency=complete"
+  configs:
+    Debug:
+      CODE_SIGNING_REQUIRED: NO
+      CODE_SIGNING_ALLOWED: NO
+    Release:
+      CODE_SIGNING_REQUIRED: YES
+      CODE_SIGNING_ALLOWED: YES
+      CODE_SIGN_IDENTITY: "Developer ID Application"
+      # Supplied explicitly after Mengoh Labs enrollment; no legacy-team fallback.
+      DEVELOPMENT_TEAM: "$(OMNIFLOW_RELEASE_TEAM)"
+      OTHER_CODE_SIGN_FLAGS: "--timestamp"
+      CODE_SIGN_ENTITLEMENTS: Resources/OmniFlow.entitlements
+
+packages:
+  FluidAudio:
+    url: https://github.com/FluidInference/FluidAudio.git
+    revision: e560c6445ffdc42e60c7b282d162aae271f18e2a
+  MLXLM:
+    url: https://github.com/ml-explore/mlx-swift-lm.git
+    revision: 7a9b7e66fe839d248a2fc00e244dd04ea1aa384d
+  MLX:
+    url: https://github.com/ml-explore/mlx-swift.git
+    exactVersion: 0.32.3
+  Transformers:
+    url: https://github.com/huggingface/swift-transformers.git
+    revision: af520cfccbbdc2127a0b77a1547fa47b7cd1f8d8
+
+schemes:
+  OmniFlow:
+    build:
+      targets:
+        OmniFlow: all
+    run:
+      config: Debug
+    archive:
+      config: Release
+  OmniFlowWidgets:
+    build:
+      targets:
+        OmniFlowWidgets: all
+    run:
+      config: Debug
+  OmniFlowAppStore:
+    build:
+      targets:
+        OmniFlowAppStore: all
+    run:
+      config: Debug
+    archive:
+      config: Release
+  OmniFlowiOS:
+    build:
+      targets:
+        OmniFlowiOS: all
+    run:
+      config: Debug
+    archive:
+      config: Release
+  # TestFlight/App Store: the same app without private APIs.
+  OmniFlowiOSAppStore:
+    build:
+      targets:
+        OmniFlowiOS: all
+    run:
+      config: AppStore
+    archive:
+      config: AppStore
+
+targets:
+  OmniFlow:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/App
+        type: group
+      - path: Sources/Core
+        type: group
+      - path: Shared
+        type: group
+      - path: Assets.xcassets
+        buildPhase: resources
+      - path: SharedArt.xcassets
+        buildPhase: resources
+      - path: Symbols.xcassets
+        buildPhase: resources
+      - path: Resources/Brand
+        type: folder
+        buildPhase: resources
+      - path: Helpers/Atlas/atlas-sdk.lock.json
+        buildPhase: resources
+      - path: Helpers/Atlas/Atlas-LICENSE.txt
+        buildPhase: resources
+      - path: Helpers/SiriVoice/SiriTTSInterface-LICENSE.txt
+        buildPhase: resources
+      - path: Resources/MLX-third-party-notices.txt
+        buildPhase: resources
+      - path: Resources/Kokoro-Licenses
+        type: folder
+        buildPhase: resources
+      - path: ../THIRD-PARTY-NOTICES.md
+        group: Notices
+        buildPhase: resources
+    dependencies:
+      - package: FluidAudio
+        product: FluidAudio
+      - package: MLXLM
+        product: MLXLLM
+      - package: MLXLM
+        product: MLXLMCommon
+      - package: MLX
+        product: MLX
+      - package: Transformers
+        product: Tokenizers
+      - target: OmniFlowWidgets
+        embed: true
+    preBuildScripts:
+      - name: Verify explicit distribution identity
+        script: 'python3 "${SRCROOT}/../scripts/check-distribution-identity.py"'
+        runOnlyWhenInstalling: false
+        basedOnDependencyAnalysis: false
+      - name: Build Now Playing bridge
+        script: 'bash "${SRCROOT}/../scripts/build-nowplaying-helper.sh"'
+        inputFiles:
+          - "$(SRCROOT)/Helpers/NowPlaying/adapter.m"
+          - "$(SRCROOT)/Helpers/NowPlaying/nowplaying.pl"
+          - "$(SRCROOT)/../scripts/build-nowplaying-helper.sh"
+        outputFiles:
+          - "$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Helpers/OmniFlowNowPlaying.dylib"
+          - "$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/OmniFlowNowPlaying.pl"
+      - name: Build local Atlas harness
+        script: 'python3 "${SRCROOT}/../scripts/build-atlas-helper.py"'
+        basedOnDependencyAnalysis: false
+        outputFiles:
+          - "$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Helpers/NotchLeeAtlas"
+    postBuildScripts:
+      - name: Stamp build number and commit
+        script: 'bash "${SRCROOT}/../scripts/stamp-build.sh"'
+        basedOnDependencyAnalysis: false
+    info:
+      path: Resources/Info.plist
+      properties:
+        CFBundleName: OmniFlow
+        CFBundleDisplayName: OmniFlow
+        ATSApplicationFontsPath: Brand
+        CFBundleIdentifier: com.mengohlabs.NotchLee
+        # scripts/stamp-build.sh replaces these with the commit count and short SHA.
+        CFBundleVersion: "2"
+        OmniFlowGitSHA: dev
+        CFBundleShortVersionString: "0.1.1"
+        CFBundlePackageType: APPL
+        LSUIElement: YES
+        NSHighResolutionCapable: YES
+        NSSupportsAutomaticGraphicsSwitching: YES
+        NSAppleEventsUsageDescription: "OmniFlow uses automation to read the current browser tab when you request window context."
+        NSAccessibilityUsageDescription: "OmniFlow reads the app, control and selected text near your pointer when agent cursor context is enabled."
+        NSMicrophoneUsageDescription: "OmniFlow uses your microphone when you choose to talk. Speech is transcribed on your Mac."
+        NSCalendarsFullAccessUsageDescription: "OmniFlow reads upcoming calendar events only when you connect the calendar widget. It does not change your events."
+        NSLocationUsageDescription: "OmniFlow uses your approximate location only to show local weather in the island."
+        NSServices:
+          - NSMenuItem:
+              default: Ask OmniFlow
+            NSMessage: useSelection
+            NSPortName: OmniFlow
+            NSSendTypes:
+              - NSStringPboardType
+            NSRequiredContext: {}
+          - NSMenuItem:
+              default: OmniFlow/Clean Up Selected Text
+            NSMessage: cleanSelection
+            NSPortName: OmniFlow
+            NSSendTypes:
+              - NSStringPboardType
+            NSRequiredContext: {}
+          - NSMenuItem:
+              default: OmniFlow/Translate Selected Text
+            NSMessage: translateSelection
+            NSPortName: OmniFlow
+            NSSendTypes:
+              - NSStringPboardType
+            NSRequiredContext: {}
+          - NSMenuItem:
+              default: OmniFlow/Change Writing Style
+            NSMessage: styleSelection
+            NSPortName: OmniFlow
+            NSSendTypes:
+              - NSStringPboardType
+            NSRequiredContext: {}
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mengohlabs.NotchLee
+        PRODUCT_NAME: OmniFlow
+        INFOPLIST_FILE: Resources/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        MACOSX_DEPLOYMENT_TARGET: "27.0"
+        ENABLE_SANDBOX: NO
+      configs:
+        Debug:
+          # A certificate keeps the app's designated requirement stable between
+          # rebuilds; ad-hoc cdhash signing invalidates macOS privacy grants.
+          CODE_SIGNING_REQUIRED: YES
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGN_IDENTITY: "Apple Development"
+          DEVELOPMENT_TEAM: "$(OMNIFLOW_DEVELOPMENT_TEAM)"
+          CODE_SIGN_ENTITLEMENTS: Resources/OmniFlow.entitlements
+        Release:
+          # The private local speech helper currently supports arm64 only.
+          # "Universal" means Mac + iPhone/iPad; the Mac build stays arm64 and must
+          # not ship an x86_64 slice implying feature parity.
+          ARCHS: arm64
+          ONLY_ACTIVE_ARCH: NO
+
+  OmniFlowAppStore:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/App
+        type: group
+      - path: Sources/Core
+        type: group
+      - path: Shared
+        type: group
+      - path: Assets.xcassets
+        buildPhase: resources
+      - path: SharedArt.xcassets
+        buildPhase: resources
+      - path: Symbols.xcassets
+        buildPhase: resources
+      - path: Resources/Brand
+        type: folder
+        buildPhase: resources
+      - path: Helpers/Atlas/atlas-sdk.lock.json
+        buildPhase: resources
+      - path: Helpers/Atlas/Atlas-LICENSE.txt
+        buildPhase: resources
+      - path: Resources/Kokoro-Licenses
+        type: folder
+        buildPhase: resources
+      - path: ../THIRD-PARTY-NOTICES.md
+        group: Notices
+        buildPhase: resources
+    dependencies:
+      - package: FluidAudio
+        product: FluidAudio
+    preBuildScripts:
+      - name: Verify explicit distribution identity
+        script: 'python3 "${SRCROOT}/../scripts/check-distribution-identity.py"'
+        runOnlyWhenInstalling: false
+        basedOnDependencyAnalysis: false
+      - name: Build local Atlas harness
+        script: 'python3 "${SRCROOT}/../scripts/build-atlas-helper.py"'
+        basedOnDependencyAnalysis: false
+        outputFiles:
+          - "$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Helpers/NotchLeeAtlas"
+    info:
+      path: Resources/InfoAppStore.plist
+      properties:
+        CFBundleName: OmniFlow
+        CFBundleDisplayName: OmniFlow
+        ATSApplicationFontsPath: Brand
+        CFBundleIdentifier: com.mengohlabs.NotchLee.appstore
+        CFBundleVersion: "4"
+        CFBundleShortVersionString: "1.0"
+        CFBundlePackageType: APPL
+        LSUIElement: YES
+        NSHighResolutionCapable: YES
+        NSSupportsAutomaticGraphicsSwitching: YES
+        LSApplicationCategoryType: public.app-category.developer-tools
+        ITSAppUsesNonExemptEncryption: NO
+        NSMicrophoneUsageDescription: "OmniFlow uses your microphone when you choose to talk. Speech is transcribed on your Mac."
+        NSCalendarsFullAccessUsageDescription: "OmniFlow reads upcoming calendar events only when you connect the calendar widget. It does not change your events."
+        NSLocationUsageDescription: "OmniFlow uses your approximate location only to show local weather in the island."
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mengohlabs.NotchLee.appstore
+        PRODUCT_NAME: OmniFlow
+        INFOPLIST_FILE: Resources/InfoAppStore.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        MACOSX_DEPLOYMENT_TARGET: "27.0"
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_ENTITLEMENTS: Resources/OmniFlowAppStore.entitlements
+        DEVELOPMENT_TEAM: "$(OMNIFLOW_APP_STORE_TEAM)"
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: APPSTORE
+        CODE_SIGNING_ALLOWED: YES
+      configs:
+        Release:
+          CODE_SIGN_IDENTITY: "Apple Distribution"
+
+  # iPhone and iPad shell sharing Sources/Core with the Mac targets. The bundle
+  # identifier is a placeholder and signing stays off until the Mengoh Labs team
+  # and iOS profiles exist; simulator builds are verification artifacts only.
+  OmniFlowiOS:
+    type: application
+    platform: iOS
+    deploymentTarget: "27.0"
+    sources:
+      - path: Sources/Core
+        type: group
+      - path: Sources/iOS
+        type: group
+      - path: Sources/iOSShared
+        type: group
+      - path: Sources/iOSWidgetShared
+        type: group
+      - path: iOSAssets.xcassets
+        buildPhase: resources
+      - path: SharedArt.xcassets
+        buildPhase: resources
+      - path: Symbols.xcassets
+        buildPhase: resources
+      - path: Resources/Kokoro-Licenses
+        type: folder
+        buildPhase: resources
+      - path: ../THIRD-PARTY-NOTICES.md
+        group: Notices
+        buildPhase: resources
+      - path: Resources/Kokoro-Apache-2.0.txt
+        buildPhase: resources
+    dependencies:
+      - package: FluidAudio
+        product: FluidAudio
+      - target: OmniFlowKeyboard
+        embed: true
+      - target: OmniFlowiOSWidgets
+        embed: true
+    info:
+      path: Resources/iOSInfo.plist
+      properties:
+        CFBundleName: OmniFlow
+        CFBundleDisplayName: OmniFlow
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleVersion: "$(OMNIFLOW_BUILD)"
+        OmniFlowGitSHA: "$(OMNIFLOW_GIT_SHA)"
+        CFBundleShortVersionString: "0.1.0"
+        CFBundlePackageType: APPL
+        ITSAppUsesNonExemptEncryption: NO
+        LSRequiresIPhoneOS: YES
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: YES
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSMicrophoneUsageDescription: "OmniFlow uses your microphone when you choose to talk. Speech is transcribed on your device."
+        NSSpeechRecognitionUsageDescription: "OmniFlow transcribes your speech on your device. Audio is not sent to a server."
+        NSFaceIDUsageDescription: "OmniFlow uses Face ID to unlock your dictations, notes and history when you turn on the lock."
+        # Keyboard dictation keeps the microphone open in the background until it turns off.
+        UIBackgroundModes: [audio]
+        CFBundleURLTypes:
+          - CFBundleURLName: com.mengohlabs.omniflow.keyboard
+            CFBundleURLSchemes: [omniflow]
+        # The recording Live Activity is started and updated locally by the app.
+        NSSupportsLiveActivities: YES
+        # EPUBs shared to OmniFlow (Files, Mail, Safari) are copied into the Reader's library.
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: EPUB book
+            LSHandlerRank: Alternate
+            LSItemContentTypes: [org.idpf.epub-container]
+        LSSupportsOpeningDocumentsInPlace: NO
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mengohlabs.NotchLee.ios
+        # Install builds pass the commit count and short SHA (scripts/install-ios-device.sh).
+        OMNIFLOW_BUILD: "1"
+        OMNIFLOW_GIT_SHA: dev
+        PRODUCT_NAME: OmniFlow
+        INFOPLIST_FILE: Resources/iOSInfo.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        IPHONEOS_DEPLOYMENT_TARGET: "27.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SUPPORTS_MACCATALYST: NO
+        # Override the Mac project defaults (hardened runtime, Developer ID
+        # identity, Mac entitlements) so none of them leak into iOS.
+        ENABLE_HARDENED_RUNTIME: NO
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+        CODE_SIGN_ENTITLEMENTS: Resources/OmniFlowiOS.entitlements
+        DEVELOPMENT_TEAM: ""
+        OTHER_CODE_SIGN_FLAGS: ""
+      # Direct builds (device install, ad hoc) may hand back to the host app
+      # through private APIs; the review-bound AppStore configuration may not.
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) OMNIFLOW_IOS_PRIVATE_APIS"
+        Release:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) OMNIFLOW_IOS_PRIVATE_APIS"
+
+  OmniFlowKeyboard:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "27.0"
+    sources:
+      - path: Keyboard
+        type: group
+      - path: Sources/iOSShared
+        type: group
+      - path: Sources/Core/FreeFlow/LiveVoiceVisuals.swift
+      - path: Sources/Core/FreeFlow/WaveformGlyph.swift
+      - path: Sources/Core/OmniFlowSymbol.swift
+    info:
+      path: Resources/KeyboardInfo.plist
+      properties:
+        CFBundleDisplayName: OmniFlow
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleVersion: "$(OMNIFLOW_BUILD)"
+        OmniFlowGitSHA: "$(OMNIFLOW_GIT_SHA)"
+        CFBundleShortVersionString: "0.1.0"
+        CFBundlePackageType: XPC!
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.keyboard-service
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).KeyboardViewController
+          NSExtensionAttributes:
+            IsASCIICapable: false
+            PrefersRightToLeft: false
+            PrimaryLanguage: en-US
+            # Full Access lets the keyboard reach the OmniFlow app over loopback; it never records.
+            RequestsOpenAccess: true
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mengohlabs.NotchLee.ios.keyboard
+        # Install builds pass the commit count and short SHA (scripts/install-ios-device.sh).
+        OMNIFLOW_BUILD: "1"
+        OMNIFLOW_GIT_SHA: dev
+        PRODUCT_NAME: OmniFlowKeyboard
+        INFOPLIST_FILE: Resources/KeyboardInfo.plist
+        IPHONEOS_DEPLOYMENT_TARGET: "27.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        APPLICATION_EXTENSION_API_ONLY: YES
+        ENABLE_HARDENED_RUNTIME: NO
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+        CODE_SIGN_ENTITLEMENTS: ""
+        DEVELOPMENT_TEAM: ""
+        OTHER_CODE_SIGN_FLAGS: ""
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) OMNIFLOW_IOS_PRIVATE_APIS"
+        Release:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) OMNIFLOW_IOS_PRIVATE_APIS"
+
+  OmniFlowWidgets:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: Widgets
+        type: group
+      - path: Shared/OmniFlowWidgetSnapshot.swift
+      - path: Shared/OmniFlowWidgetIntents.swift
+      - path: Sources/Core/OmniFlowSymbol.swift
+      - path: Assets.xcassets
+        buildPhase: resources
+      - path: SharedArt.xcassets
+        buildPhase: resources
+      - path: Symbols.xcassets
+        buildPhase: resources
+    postBuildScripts:
+      - name: Stamp build number and commit
+        script: 'bash "${SRCROOT}/../scripts/stamp-build.sh"'
+        basedOnDependencyAnalysis: false
+    info:
+      path: Resources/WidgetsInfo.plist
+      properties:
+        CFBundleName: OmniFlow Widgets
+        CFBundleDisplayName: OmniFlow
+        # Stamped with the app's build number (scripts/stamp-build.sh) so the versions match.
+        CFBundleVersion: "2"
+        CFBundleShortVersionString: "0.1.1"
+        CFBundlePackageType: XPC!
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mengohlabs.NotchLee.widgets
+        PRODUCT_NAME: OmniFlowWidgets
+        INFOPLIST_FILE: Resources/WidgetsInfo.plist
+        MACOSX_DEPLOYMENT_TARGET: "27.0"
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: OMNIFLOW_WIDGET
+        CODE_SIGN_ENTITLEMENTS: Resources/OmniFlowWidgets.entitlements
+        ENABLE_APP_SANDBOX: YES
+        SKIP_INSTALL: YES
+      configs:
+        Debug:
+          CODE_SIGNING_REQUIRED: YES
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGN_IDENTITY: "Apple Development"
+          DEVELOPMENT_TEAM: "$(OMNIFLOW_DEVELOPMENT_TEAM)"
+        Release:
+          ARCHS: arm64
+          ONLY_ACTIVE_ARCH: NO
+
+  # iPhone and iPad widgets, controls and the recording Live Activity. Needs no
+  # App Group (a free team cannot provision one on iOS); the data widgets stay
+  # compiled out until OMNIFLOW_IOS_APP_GROUP is set with a paid team.
+  OmniFlowiOSWidgets:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "27.0"
+    sources:
+      - path: WidgetsiOS
+        type: group
+      - path: Sources/iOSWidgetShared
+        type: group
+      - path: Sources/Core/RedPanda.swift
+      - path: Sources/Core/IslandTypes.swift
+      - path: Sources/Core/IslandScreenGeometry.swift
+      - path: Sources/Core/OmniFlowSymbol.swift
+      - path: Symbols.xcassets
+        buildPhase: resources
+    info:
+      path: Resources/iOSWidgetsInfo.plist
+      properties:
+        CFBundleName: OmniFlow Widgets
+        CFBundleDisplayName: OmniFlow
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleVersion: "1"
+        CFBundleShortVersionString: "0.1.0"
+        CFBundlePackageType: XPC!
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mengohlabs.NotchLee.ios.widgets
+        PRODUCT_NAME: OmniFlowiOSWidgets
+        INFOPLIST_FILE: Resources/iOSWidgetsInfo.plist
+        IPHONEOS_DEPLOYMENT_TARGET: "27.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        APPLICATION_EXTENSION_API_ONLY: YES
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) OMNIFLOW_IOS_WIDGET"
+        SKIP_INSTALL: YES
+        ENABLE_HARDENED_RUNTIME: NO
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+        CODE_SIGN_ENTITLEMENTS: ""
+        DEVELOPMENT_TEAM: ""
+        OTHER_CODE_SIGN_FLAGS: ""

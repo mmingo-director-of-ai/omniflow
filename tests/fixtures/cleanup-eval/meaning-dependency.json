@@ -1,0 +1,15 @@
+{
+  "id": "meaning-dependency",
+  "kind": "meaning",
+  "raw": "Deploy the update only after the security review passes. If it fails keep the current version running.",
+  "reference": "Deploy the update only after the security review passes. If it fails, keep the current version running.",
+  "mustContain": [
+    "only after",
+    "if it fails",
+    "current version"
+  ],
+  "mustNotContain": [
+    "before the security"
+  ],
+  "vocabulary": ""
+}

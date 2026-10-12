@@ -1,0 +1,19 @@
+{
+  "id": "meaning-distant-correction",
+  "kind": "meaning",
+  "raw": "We are talking about suspicious messages that try to steal credentials. The first thing we need is a way for employees to report them without opening any links. The report should include the sender and the subject so the security team can investigate. We also need training material for new staff and a short guide for people who work remotely. These fishing emails should always go to the security team. Do not forward them to customers.",
+  "reference": "We are talking about suspicious messages that try to steal credentials. The first thing we need is a way for employees to report them without opening any links. The report should include the sender and the subject so the security team can investigate.\n\nWe also need training material for new staff and a short guide for people who work remotely. These phishing emails should always go to the security team. Do not forward them to customers.",
+  "mustContain": [
+    "phishing emails",
+    "without opening",
+    "sender",
+    "subject",
+    "training",
+    "remotely",
+    "do not forward"
+  ],
+  "mustNotContain": [
+    "fishing emails"
+  ],
+  "vocabulary": ""
+}

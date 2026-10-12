@@ -1,0 +1,13 @@
+{
+  "id": "agreement-1",
+  "kind": "grammar",
+  "raw": "the reports was finished yesterday and the team have reviewed it",
+  "reference": "The reports were finished yesterday, and the team has reviewed them.",
+  "mustContain": [
+    "reports were"
+  ],
+  "mustNotContain": [
+    "reports was"
+  ],
+  "vocabulary": ""
+}

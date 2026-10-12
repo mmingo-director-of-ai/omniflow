@@ -1,0 +1,12 @@
+{
+  "id": "runon-tasks",
+  "kind": "run-on",
+  "raw": "first we update the dependencies then we run the migration after that we deploy to staging and if that works we ship to production on friday",
+  "reference": "First, we update the dependencies. Then we run the migration. After that, we deploy to staging, and if that works, we ship to production on Friday.",
+  "mustContain": [
+    "Friday",
+    "staging"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

@@ -1,0 +1,11 @@
+{
+  "id": "punct-question",
+  "kind": "punctuation",
+  "raw": "did you push the branch or should i do it",
+  "reference": "Did you push the branch, or should I do it?",
+  "mustContain": [
+    "?"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

@@ -1,0 +1,14 @@
+{
+  "id": "context-fishing",
+  "kind": "homophone",
+  "raw": "We are planning a weekend on the lake. The fishing trip starts on Saturday.",
+  "reference": "We are planning a weekend on the lake. The fishing trip starts on Saturday.",
+  "mustContain": [
+    "fishing trip",
+    "Saturday"
+  ],
+  "mustNotContain": [
+    "phishing"
+  ],
+  "vocabulary": ""
+}

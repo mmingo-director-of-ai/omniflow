@@ -1,0 +1,15 @@
+{
+  "id": "meaning-uncertainty",
+  "kind": "meaning",
+  "raw": "We could finish on Friday but I am not sure yet. Please do not promise a delivery date.",
+  "reference": "We could finish on Friday, but I am not sure yet. Please do not promise a delivery date.",
+  "mustContain": [
+    "could",
+    "not sure",
+    "do not promise"
+  ],
+  "mustNotContain": [
+    "will finish"
+  ],
+  "vocabulary": ""
+}

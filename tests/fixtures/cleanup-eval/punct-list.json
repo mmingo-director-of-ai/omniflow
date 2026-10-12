@@ -1,0 +1,12 @@
+{
+  "id": "punct-list",
+  "kind": "punctuation",
+  "raw": "we need milk eggs bread and coffee for the office",
+  "reference": "We need milk, eggs, bread, and coffee for the office.",
+  "mustContain": [
+    "milk,",
+    "eggs,"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

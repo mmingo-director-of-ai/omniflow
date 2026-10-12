@@ -1,0 +1,13 @@
+{
+  "id": "term-iocs",
+  "kind": "technical",
+  "raw": "pull the i o c s from the last incident and add them to the block list",
+  "reference": "Pull the IOCs from the last incident and add them to the block list.",
+  "mustContain": [
+    "IOCs"
+  ],
+  "mustNotContain": [
+    "i o c s"
+  ],
+  "vocabulary": "IOCs"
+}

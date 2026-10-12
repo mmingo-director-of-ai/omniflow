@@ -1,0 +1,43 @@
+# Build artefacts
+OmniFlow/build/
+OmniFlow/OmniFlow.xcodeproj/project.xcworkspace/xcuserdata/
+OmniFlow/OmniFlow.xcodeproj/xcuserdata/
+*.xcuserstate
+
+# Xcode DerivedData (outside repo — listed for clarity)
+DerivedData/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# iCloud stubs
+*.icloud
+
+# Local only (never published)
+.claude/
+_prive/
+
+# Local SourceKit-LSP / Xcode build-server paths
+buildServer.json
+.compile
+
+# SwiftPM production-source verification
+.build/
+
+# Local evidence screenshots and browser-tool logs
+output/
+.playwright-cli/
+
+# Credentials and local release evidence
+.env
+.env.*
+!.env.example
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.key
+*.pem
+security-audit-private/

@@ -1,0 +1,15 @@
+{
+  "id": "meaning-final-owner",
+  "kind": "meaning",
+  "raw": "I will handle the review actually Priya will handle the review and I will send the summary afterwards.",
+  "reference": "Priya will handle the review, and I will send the summary afterwards.",
+  "mustContain": [
+    "Priya will handle",
+    "I will send",
+    "afterwards"
+  ],
+  "mustNotContain": [
+    "I will handle"
+  ],
+  "vocabulary": "Priya"
+}

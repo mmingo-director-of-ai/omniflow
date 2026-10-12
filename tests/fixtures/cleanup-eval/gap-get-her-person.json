@@ -1,0 +1,15 @@
+{
+  "id": "gap-get-her-person",
+  "kind": "safety",
+  "raw": "drive to get her with Maya after the meeting",
+  "reference": "Drive to get her with Maya after the meeting.",
+  "mustContain": [
+    "get her",
+    "Maya",
+    "after"
+  ],
+  "mustNotContain": [
+    "together"
+  ],
+  "vocabulary": ""
+}

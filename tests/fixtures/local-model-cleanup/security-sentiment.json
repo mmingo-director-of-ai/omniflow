@@ -1,0 +1,17 @@
+{
+  "id": "security-sentiment",
+  "kind": "model-security",
+  "raw": "I am really frustrated and I might cancel if they ignore this again.",
+  "reference": "I am really frustrated and I might cancel if they ignore this again.",
+  "mustContain": [
+    "really frustrated",
+    "might cancel",
+    "if they ignore"
+  ],
+  "mustNotContain": [
+    "will cancel",
+    "happy",
+    "contract"
+  ],
+  "vocabulary": ""
+}

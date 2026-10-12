@@ -1,0 +1,13 @@
+{
+  "id": "gap-together-parts",
+  "kind": "word-boundary",
+  "raw": "these components fit to get her in the enclosure",
+  "reference": "These components fit together in the enclosure.",
+  "mustContain": [
+    "fit together"
+  ],
+  "mustNotContain": [
+    "to get her"
+  ],
+  "vocabulary": ""
+}

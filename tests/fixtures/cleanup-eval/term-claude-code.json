@@ -1,0 +1,13 @@
+{
+  "id": "term-claude-code",
+  "kind": "technical",
+  "raw": "ask cloud code to refactor the parser and run the tests",
+  "reference": "Ask Claude Code to refactor the parser and run the tests.",
+  "mustContain": [
+    "Claude Code"
+  ],
+  "mustNotContain": [
+    "cloud code"
+  ],
+  "vocabulary": ""
+}

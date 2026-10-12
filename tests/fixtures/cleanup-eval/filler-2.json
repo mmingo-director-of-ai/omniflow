@@ -1,0 +1,11 @@
+{
+  "id": "filler-2",
+  "kind": "filler",
+  "raw": "i was kind of thinking that we could sort of use the cache instead",
+  "reference": "I was thinking that we could use the cache instead.",
+  "mustContain": [
+    "use the cache"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

@@ -1,0 +1,13 @@
+{
+  "id": "selfcorrect-day",
+  "kind": "self-correction",
+  "raw": "schedule the review for tuesday no wait wednesday afternoon",
+  "reference": "Schedule the review for Wednesday afternoon.",
+  "mustContain": [
+    "Wednesday"
+  ],
+  "mustNotContain": [
+    "Tuesday"
+  ],
+  "vocabulary": ""
+}

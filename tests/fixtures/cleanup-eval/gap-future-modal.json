@@ -1,0 +1,15 @@
+{
+  "id": "gap-future-modal",
+  "kind": "safety",
+  "raw": "tomorrow we could test the upload if the review is finished",
+  "reference": "Tomorrow we could test the upload if the review is finished.",
+  "mustContain": [
+    "could",
+    "if"
+  ],
+  "mustNotContain": [
+    "will test",
+    "we tested"
+  ],
+  "vocabulary": ""
+}

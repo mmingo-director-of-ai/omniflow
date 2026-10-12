@@ -1,0 +1,14 @@
+{
+  "id": "homophone-its",
+  "kind": "homophone",
+  "raw": "the service is down and its logs show its been failing since monday",
+  "reference": "The service is down, and its logs show it's been failing since Monday.",
+  "mustContain": [
+    "it's been failing",
+    "Monday"
+  ],
+  "mustNotContain": [
+    "its been failing"
+  ],
+  "vocabulary": ""
+}

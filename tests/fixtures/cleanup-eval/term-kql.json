@@ -1,0 +1,13 @@
+{
+  "id": "term-kql",
+  "kind": "technical",
+  "raw": "write a k q l query that finds failed sign ins from new countries",
+  "reference": "Write a KQL query that finds failed sign-ins from new countries.",
+  "mustContain": [
+    "KQL"
+  ],
+  "mustNotContain": [
+    "k q l"
+  ],
+  "vocabulary": "KQL"
+}

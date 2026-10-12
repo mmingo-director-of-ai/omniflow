@@ -1,0 +1,13 @@
+{
+  "id": "boundary-together",
+  "kind": "word-boundary",
+  "raw": "we should rotate the keys to get her with the certificates next week",
+  "reference": "We should rotate the keys together with the certificates next week.",
+  "mustContain": [
+    "together with"
+  ],
+  "mustNotContain": [
+    "to get her"
+  ],
+  "vocabulary": ""
+}

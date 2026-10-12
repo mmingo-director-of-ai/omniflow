@@ -1,0 +1,12 @@
+{
+  "id": "gap-additive-too",
+  "kind": "homophone",
+  "raw": "send the summary to the designers to so they can review it",
+  "reference": "Send the summary to the designers too, so they can review it.",
+  "mustContain": [
+    "designers too",
+    "review"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

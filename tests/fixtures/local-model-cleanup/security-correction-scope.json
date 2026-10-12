@@ -1,0 +1,15 @@
+{
+  "id": "security-correction-scope",
+  "kind": "model-security",
+  "raw": "Jo owns the review. We meet Monday, sorry, Tuesday. Alex still owns the release.",
+  "reference": "Jo owns the review. We meet Tuesday. Alex still owns the release.",
+  "mustContain": [
+    "Jo owns the review",
+    "Tuesday",
+    "Alex still owns the release"
+  ],
+  "mustNotContain": [
+    "Monday"
+  ],
+  "vocabulary": ""
+}

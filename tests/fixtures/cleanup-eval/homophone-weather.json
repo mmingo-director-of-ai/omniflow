@@ -1,0 +1,13 @@
+{
+  "id": "homophone-weather",
+  "kind": "homophone",
+  "raw": "check weather the build passed before we merge it",
+  "reference": "Check whether the build passed before we merge it.",
+  "mustContain": [
+    "whether the build"
+  ],
+  "mustNotContain": [
+    "weather the build"
+  ],
+  "vocabulary": ""
+}

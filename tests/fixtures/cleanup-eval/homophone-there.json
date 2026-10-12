@@ -1,0 +1,15 @@
+{
+  "id": "homophone-there",
+  "kind": "homophone",
+  "raw": "put the files over their and then we can check if there ready",
+  "reference": "Put the files over there, and then we can check if they're ready.",
+  "mustContain": [
+    "over there",
+    "they're ready"
+  ],
+  "mustNotContain": [
+    "over their",
+    "there ready"
+  ],
+  "vocabulary": ""
+}

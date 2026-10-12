@@ -1,0 +1,14 @@
+{
+  "id": "homophone-to",
+  "kind": "homophone",
+  "raw": "i want to go to the store to so we can by more coffee",
+  "reference": "I want to go to the store too, so we can buy more coffee.",
+  "mustContain": [
+    "store too",
+    "buy more coffee"
+  ],
+  "mustNotContain": [
+    "by more coffee"
+  ],
+  "vocabulary": ""
+}

@@ -1,0 +1,15 @@
+{
+  "id": "meaning-literal-question",
+  "kind": "meaning",
+  "raw": "Could you keep the label \"check weather\" exactly as written and check whether the build passed before we merge it.",
+  "reference": "Could you keep the label \"check weather\" exactly as written and check whether the build passed before we merge it?",
+  "mustContain": [
+    "\"check weather\"",
+    "whether the build",
+    "before"
+  ],
+  "mustNotContain": [
+    "\"check whether\""
+  ],
+  "vocabulary": ""
+}

@@ -1,0 +1,11 @@
+{
+  "id": "negation-keep",
+  "kind": "safety",
+  "raw": "do not delete the production database under any circumstances",
+  "reference": "Do not delete the production database under any circumstances.",
+  "mustContain": [
+    "not delete"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

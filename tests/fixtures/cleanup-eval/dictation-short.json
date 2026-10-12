@@ -1,0 +1,16 @@
+{
+  "id": "dictation-short",
+  "kind": "real",
+  "raw": "OK now let's do this. Acme is released widgets like two days ago so let's start building widgets to replace the template system I want to introduce a like right panel as well that can show like extra information and then we can also put things in there like summary tables from like you know we're doing reviews table facts will table ICs will tell all the kind of stuff",
+  "reference": "OK, now let's do this. Acme released widgets two days ago, so let's start building widgets to replace the template system. I want to introduce a right panel as well that can show extra information. Then we can also put things in there like summary tables from reviews: a facts table, an IOC table, all that kind of stuff.",
+  "mustContain": [
+    "Acme released",
+    "widgets",
+    "IOC"
+  ],
+  "mustNotContain": [
+    "you know",
+    "a like right"
+  ],
+  "vocabulary": "IOC\nAcme"
+}

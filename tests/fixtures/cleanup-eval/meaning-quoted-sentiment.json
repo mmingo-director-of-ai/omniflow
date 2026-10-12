@@ -1,0 +1,14 @@
+{
+  "id": "meaning-quoted-sentiment",
+  "kind": "meaning",
+  "raw": "The customer wrote \"I hate this update\" but I do not agree. I think the new version is much easier to use.",
+  "reference": "The customer wrote \"I hate this update\", but I do not agree. I think the new version is much easier to use.",
+  "mustContain": [
+    "\"I hate this update\"",
+    "do not agree",
+    "I think",
+    "easier"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

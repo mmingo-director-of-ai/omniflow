@@ -1,0 +1,15 @@
+{
+  "id": "meaning-weather-literal",
+  "kind": "meaning",
+  "raw": "Check the weather before we leave for the lake. If it rains we should bring coats.",
+  "reference": "Check the weather before we leave for the lake. If it rains, we should bring coats.",
+  "mustContain": [
+    "weather",
+    "if it rains",
+    "should"
+  ],
+  "mustNotContain": [
+    "whether before"
+  ],
+  "vocabulary": ""
+}

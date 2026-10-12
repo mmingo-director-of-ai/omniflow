@@ -1,0 +1,106 @@
+package main
+
+import (
+	"context"
+	"crypto/sha256"
+	"encoding/base64"
+	"encoding/hex"
+	"encoding/json"
+	"math"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"strings"
+	"testing"
+)
+
+func TestGenerateOracle(t *testing.T) {
+	out := os.Getenv("ORACLE_OUT")
+	if out == "" {
+		t.Skip()
+	}
+	inputs := []string{
+		`{"name":"t","description":"<b>&amp;</b> ' \" \\ /     \b \f \t \n \r \u0001 \u001f \u007f é 紅熊猫 😀","inputSchema":{"type":"object"}}`,
+		"{\"name\":\"bad\xff\xfeutf8\xc3\",\"description\":\"lone \\ud800 surrogate \\udc00 pair \\ud83d\\ude00\"}",
+		"{\"b\":1,\"a\":2,\"é\":3,\"Z\":4,\"_\":5,\"\xe7\xb4\x85\":6,\"aa\":7,\"a\\u0000\":8}",
+		`{"n":[0,-0,0.1,1e-6,9.99e-7,1e-7,1e20,1e21,1e+21,123456789012345678901234567890,9007199254740993,1.5e300,-2.5e-300,5e-324,1.7976931348623157e308,100,1.0,1E2,0.000001,12345.678e-3,3.14159265358979323846,-1,42]}`,
+		`{"nested":{"z":{"y":[{"x":null,"w":true,"v":false}]},"empty":{},"arr":[]},"s":"é\u0000"}`,
+		`["top", "level", {"k": [1, 2, {"deep": "<script>"}]}]`,
+		`"just a string with < > &"`,
+		`{"name":"read_01","description":"café 紅熊猫. café 紅熊猫. ","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}`,
+	}
+	var lines []string
+	for _, input := range inputs {
+		var value interface{}
+		if err := json.Unmarshal([]byte(input), &value); err != nil {
+			t.Fatal(input, err)
+		}
+		text := jsonText(value)
+		sum := sha256.Sum256([]byte(text))
+		lines = append(lines, jsonText(map[string]string{"input": base64.StdEncoding.EncodeToString([]byte(input)), "output": base64.StdEncoding.EncodeToString([]byte(text)), "sha256": hex.EncodeToString(sum[:])}))
+	}
+	floats := []float64{0, math.Copysign(0, -1), 0.1, 1e-6, 9.99e-7, 1e-7, 1e20, 1e21, 123456789012345678901234567890, 9007199254740993, 1.5e300, -2.5e-300, 5e-324, math.MaxFloat64, 100, 12.345678, 3.141592653589793, 1e-5, 0.000123, 1.0000000000000002, 2e-308, 4.9406564584124654e-324, 1e100, 123456.789e10, 999999999999999999999.0, 5e-7}
+	for _, f := range floats {
+		lines = append(lines, jsonText(map[string]interface{}{"float": math.Float64bits(f), "output": jsonText(f)}))
+	}
+	if err := os.WriteFile(filepath.Join(out, "go-json-oracle.jsonl"), []byte(strings.Join(lines, "\n")+"\n"), 0644); err != nil {
+		t.Fatal(err)
+	}
+
+	// Durable workspace produced by the Go helper's own persistence code.
+	m := memoryFixture(t, func(request analysisRequest) frame {
+		if request.Phase == "merge" {
+			var texts []string
+			for _, record := range request.Records {
+				texts = append(texts, record.Text)
+			}
+			return frame{AnalysisResult: &analysisReply{Text: strings.Join(texts, " "), Records: len(request.Records)}}
+		}
+		text := utf8Prefix(request.Text, 3000)
+		quote := utf8Prefix(text, 60)
+		return frame{AnalysisResult: &analysisReply{Text: "Note: " + quote, Quotes: []string{quote}, Bytes: len(text)}}
+	})
+	s := m.bridge.store
+	s.question = "Read the complete archive about café 紅熊猫 decisions"
+	if err := s.enablePersistence(false); err != nil {
+		t.Fatal(err)
+	}
+	source := "First: staging only.\n" + strings.Repeat("café 紅熊猫 archive line\n", 900) + "Final: production NOT approved.\n"
+	entry, err := s.put("mcp:s1:read_archive", []byte(source), true)
+	if err != nil {
+		t.Fatal(err)
+	}
+	schema, _ := s.put("mcp:s1:read_archive:schema", []byte(`{"type":"object","properties":{}}`), true)
+	schema.Kind = "schema"
+	_ = s.persistIndex()
+	if _, err := s.put("mcp:s1:read_archive:attachment", []byte{0, 1, 2, 255}, false); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := m.execute(context.Background(), map[string]interface{}{"operation": "remember", "id": entry.ID, "quote": "Final: production NOT approved."}); err != nil {
+		t.Fatal(err)
+	}
+	if err := m.receipt("mcp", map[string]interface{}{"operation": "call", "server": "s1", "name": "read_archive"}, true); err != nil {
+		t.Fatal(err)
+	}
+	// One batch of passes leaves a partial job.
+	if _, err := m.analyze(context.Background(), entry.ID, ""); err != nil {
+		t.Fatal(err)
+	}
+	job := m.jobs[entry.ID]
+	if job.Complete || job.Cursor == 0 {
+		t.Fatal("expected a partial job", job.Cursor, job.Total)
+	}
+	s.close()
+	f, _ := os.OpenFile(filepath.Join(s.directory, "task-memory.jsonl"), os.O_APPEND|os.O_WRONLY, 0600)
+	f.WriteString(`{"record":{"id":"m9`)
+	f.Close()
+	target := filepath.Join(out, "go-workspace")
+	os.RemoveAll(target)
+	if err := exec.Command("cp", "-Rp", s.directory, target).Run(); err != nil {
+		t.Fatal(err)
+	}
+	os.Remove(filepath.Join(target, ".lock"))
+	summary := map[string]interface{}{"question": s.question, "payloadID": entry.ID, "cursor": job.Cursor, "total": job.Total, "records": len(m.records), "receipts": m.receipts, "sourceSHA256": entry.SHA256}
+	_ = os.WriteFile(filepath.Join(out, "go-workspace-summary.json"), []byte(jsonText(summary)), 0644)
+	os.RemoveAll(s.directory)
+}

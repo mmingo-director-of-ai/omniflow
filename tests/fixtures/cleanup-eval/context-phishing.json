@@ -1,0 +1,14 @@
+{
+  "id": "context-phishing",
+  "kind": "homophone",
+  "raw": "We are reviewing suspicious messages that steal passwords. These fishing emails should be reported to the security team.",
+  "reference": "We are reviewing suspicious messages that steal passwords. These phishing emails should be reported to the security team.",
+  "mustContain": [
+    "phishing emails",
+    "security team"
+  ],
+  "mustNotContain": [
+    "fishing emails"
+  ],
+  "vocabulary": ""
+}

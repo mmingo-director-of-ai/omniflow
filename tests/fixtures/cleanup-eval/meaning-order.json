@@ -1,0 +1,14 @@
+{
+  "id": "meaning-order",
+  "kind": "meaning",
+  "raw": "Before we notify customers we need to verify the fix. After the verification send the update and then archive the incident.",
+  "reference": "Before we notify customers, we need to verify the fix. After the verification, send the update and then archive the incident.",
+  "mustContain": [
+    "before",
+    "verify",
+    "after",
+    "then archive"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "meaning-tone",
+  "kind": "meaning",
+  "raw": "I am really frustrated that this still crashes. The design looks great though and I appreciate the work so far.",
+  "reference": "I am really frustrated that this still crashes. The design looks great, though, and I appreciate the work so far.",
+  "mustContain": [
+    "frustrated",
+    "still crashes",
+    "great",
+    "appreciate"
+  ],
+  "mustNotContain": [
+    "happy that"
+  ],
+  "vocabulary": ""
+}

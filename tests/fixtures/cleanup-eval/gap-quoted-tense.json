@@ -1,0 +1,13 @@
+{
+  "id": "gap-quoted-tense",
+  "kind": "safety",
+  "raw": "keep the exact label \"yesterday we deploy the fix\" on the sample",
+  "reference": "Keep the exact label \"yesterday we deploy the fix\" on the sample.",
+  "mustContain": [
+    "\"yesterday we deploy the fix\""
+  ],
+  "mustNotContain": [
+    "deployed"
+  ],
+  "vocabulary": ""
+}

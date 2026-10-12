@@ -1,0 +1,13 @@
+{
+  "id": "runon-meeting",
+  "kind": "run-on",
+  "raw": "the meeting went well everyone agreed on the plan sarah will draft the proposal and tom will review it by wednesday",
+  "reference": "The meeting went well. Everyone agreed on the plan. Sarah will draft the proposal, and Tom will review it by Wednesday.",
+  "mustContain": [
+    "Sarah",
+    "Tom",
+    "Wednesday"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

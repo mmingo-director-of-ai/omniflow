@@ -1,0 +1,14 @@
+{
+  "id": "meaning-two-requests",
+  "kind": "meaning",
+  "raw": "Please check whether the backup completed and let me know if it failed. Separately we need to book a room for the design review on Monday.",
+  "reference": "Please check whether the backup completed and let me know if it failed.\n\nSeparately, we need to book a room for the design review on Monday.",
+  "mustContain": [
+    "whether",
+    "if it failed",
+    "\n\n",
+    "Monday"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

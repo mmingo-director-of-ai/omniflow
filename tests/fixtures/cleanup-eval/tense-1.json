@@ -1,0 +1,15 @@
+{
+  "id": "tense-1",
+  "kind": "grammar",
+  "raw": "yesterday we deploy the fix and it break the login page",
+  "reference": "Yesterday we deployed the fix, and it broke the login page.",
+  "mustContain": [
+    "deployed",
+    "broke"
+  ],
+  "mustNotContain": [
+    "we deploy the",
+    "it break"
+  ],
+  "vocabulary": ""
+}

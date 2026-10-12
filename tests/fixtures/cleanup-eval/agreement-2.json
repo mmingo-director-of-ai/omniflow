@@ -1,0 +1,15 @@
+{
+  "id": "agreement-2",
+  "kind": "grammar",
+  "raw": "she don't think the servers needs a restart",
+  "reference": "She doesn't think the servers need a restart.",
+  "mustContain": [
+    "doesn't",
+    "servers need"
+  ],
+  "mustNotContain": [
+    "she don't",
+    "servers needs"
+  ],
+  "vocabulary": ""
+}

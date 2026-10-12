@@ -1,0 +1,11 @@
+{
+  "id": "boundary-every-day",
+  "kind": "word-boundary",
+  "raw": "we run the backup every day at a quarter past nine",
+  "reference": "We run the backup every day at a quarter past nine.",
+  "mustContain": [
+    "every day"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

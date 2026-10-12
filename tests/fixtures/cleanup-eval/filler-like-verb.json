@@ -1,0 +1,12 @@
+{
+  "id": "filler-like-verb",
+  "kind": "filler",
+  "raw": "i like the new design and it looks like the old one in dark mode",
+  "reference": "I like the new design, and it looks like the old one in dark mode.",
+  "mustContain": [
+    "I like the new design",
+    "looks like the old one"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

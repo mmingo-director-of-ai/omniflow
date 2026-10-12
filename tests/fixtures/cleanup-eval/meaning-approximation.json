@@ -1,0 +1,14 @@
+{
+  "id": "meaning-approximation",
+  "kind": "meaning",
+  "raw": "I think it will take like two hours but that is only an estimate. It is not a promise.",
+  "reference": "I think it will take about two hours, but that is only an estimate. It is not a promise.",
+  "mustContain": [
+    "I think",
+    "about|approximately|like",
+    "only an estimate",
+    "not a promise"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

@@ -1,0 +1,13 @@
+{
+  "id": "security-number-unit",
+  "kind": "model-security",
+  "raw": "The dose is 0.5 mg, not 5 mg. The reference number is AB-0192.",
+  "reference": "The dose is 0.5 mg, not 5 mg. The reference number is AB-0192.",
+  "mustContain": [
+    "0.5 mg",
+    "not 5 mg",
+    "AB-0192"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

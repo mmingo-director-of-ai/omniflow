@@ -1,0 +1,13 @@
+{
+  "id": "paragraph-topic",
+  "kind": "punctuation",
+  "raw": "The release is ready and the tests passed. Separately we need to book the meeting room for Monday and invite the design team.",
+  "reference": "The release is ready, and the tests passed.\n\nSeparately, we need to book the meeting room for Monday and invite the design team.",
+  "mustContain": [
+    "\n\n",
+    "Monday",
+    "design team"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

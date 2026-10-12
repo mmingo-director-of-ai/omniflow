@@ -1,0 +1,20 @@
+{
+  "id": "paragraph-concluding-api-switch",
+  "kind": "grammar",
+  "raw": "Okay, I just want to test and see if we're seeing any improvement before we were getting some pretty shoddy work. I thought maybe it was related to the microphone that I'm using, connected by a USB, but it seems like maybe we were just using the wrong API. So switching to speech, transcription or transcriber. Instead of diction transcriber, maybe the key here.",
+  "reference": "Okay, I just want to test and see if we're seeing any improvement. Before, we were getting some pretty shoddy work. I thought maybe it was related to the microphone that I'm using, connected by USB, but it seems like maybe we were just using the wrong API.\n\nSwitching to SpeechTranscriber instead of DictationTranscriber may be the key here.",
+  "mustContain": [
+    "\n\n",
+    "SpeechTranscriber instead of DictationTranscriber may be the key",
+    "shoddy",
+    "microphone",
+    "maybe"
+  ],
+  "mustNotContain": [
+    "diction transcriber",
+    "transcription or transcriber",
+    ". Instead of",
+    "is the key"
+  ],
+  "vocabulary": ""
+}

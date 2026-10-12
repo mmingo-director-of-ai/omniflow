@@ -1,0 +1,13 @@
+{
+  "id": "selfcorrect-number",
+  "kind": "self-correction",
+  "raw": "we need two no sorry three more servers for the cluster",
+  "reference": "We need three more servers for the cluster.",
+  "mustContain": [
+    "three"
+  ],
+  "mustNotContain": [
+    "two"
+  ],
+  "vocabulary": ""
+}

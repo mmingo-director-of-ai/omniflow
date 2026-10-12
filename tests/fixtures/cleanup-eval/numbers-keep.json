@@ -1,0 +1,12 @@
+{
+  "id": "numbers-keep",
+  "kind": "safety",
+  "raw": "set the timeout to thirty seconds and retry five times",
+  "reference": "Set the timeout to thirty seconds and retry five times.",
+  "mustContain": [
+    "thirty|30",
+    "five|5"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

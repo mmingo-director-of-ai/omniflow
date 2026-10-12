@@ -1,0 +1,12 @@
+{
+  "id": "names-keep",
+  "kind": "safety",
+  "raw": "tell priya and jamal that the demo moved to three thirty",
+  "reference": "Tell Priya and Jamal that the demo moved to three thirty.",
+  "mustContain": [
+    "Priya",
+    "Jamal"
+  ],
+  "mustNotContain": [],
+  "vocabulary": ""
+}

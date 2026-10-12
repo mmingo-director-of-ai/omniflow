@@ -1,0 +1,16 @@
+{
+  "id": "gap-past-event",
+  "kind": "grammar",
+  "raw": "yesterday we test the upload and it fail twice",
+  "reference": "Yesterday we tested the upload and it failed twice.",
+  "mustContain": [
+    "tested",
+    "failed",
+    "twice"
+  ],
+  "mustNotContain": [
+    "we test the",
+    "it fail twice"
+  ],
+  "vocabulary": ""
+}
